@@ -1,0 +1,169 @@
+/*RESET CSS*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*COR DO FUNDO*/
+body {
+    background: #4b1068;
+}
+
+/*CENTRALIZAÇÃO DO EMOJI*/
+.centro {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/*ESTILO ROSTO DO EMOJI*/
+.emoji {
+    position: relative;
+    display: inline-block;
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    box-shadow: inset 0 0 10px 2px #eead2b;
+    background: linear-gradient(#feed65, #eead2f);
+}
+
+/*OUTROS ELEMENTOS DO EMOJI FICAM ABSOLUTOS DENTRO DO ROSTO*/
+.emoji-face,
+.emoji-sobrancelha,
+.emoji-olho,
+.emoji-boca {
+    position: absolute;
+}
+
+/*ANIMAÇÃO DA CABEÇA SE MOVIMENTANDO*/
+.emoji-face {
+    height: 120px;
+    width: 120px;
+    animation: face 3s linear infinite;
+}
+
+@keyframes face {
+
+    15%,
+    25% {
+        transform: rotate(20deg) translateX(-20px);
+    }
+
+    45%,
+    65% {
+        transform: rotate(-20deg) translateX(20px);
+    }
+
+    75%,
+    100% {
+        transform: rotate(0) translateX(0);
+    }
+}
+
+/*--------------------*/
+
+/*CONTAINER DA SOBRANCELHA
+ Usa box-shadow para criar pequenos pontos que ajudam a dar textura */
+.emoji-sobrancelha {
+    left: calc(50% - 3px);
+    height: 0px;
+    width: 0px;
+    background-color: transparent;
+    border-radius: 50%;
+    box-shadow: -18px 0 0 0 #aa7408,
+        -33px 0 0 0 #aa7408,
+        18px 0 0 0 #aa7408,
+        33px 0 0 0 #aa7408;
+    animation: sobrancelha 3s linear infinite;
+}
+
+/*ANIMAÇÃO SOBRANCELHA*/
+@keyframes sobrancelha {
+
+    15%,
+    65% {
+        top: 25px;
+    }
+
+    75%,
+    100%,
+    0% {
+        top: 15px;
+    }
+}
+
+/*SOBRANCELHA EM ARCO*/
+.emoji-sobrancelha:before,
+.emoji-sobrancelha:after {
+    position: absolute;
+    content: '';
+    left: calc(50% -12px);
+    top: -3px;
+    width: 35px;
+    height: 30px;
+    border: 6px solid #aa7408;
+    box-sizing: border-box;
+    border-radius: 50%;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-right-color: transparent;
+}
+
+/*SOBRANCELHA ESQUERDA*/
+.emoji-sobrancelha:before {
+    margin-left: -35px;
+}
+
+/*SOBRANCELHA DIREITA*/
+.emoji-sobrancelha:after {
+    margin-left: 20px;
+}
+
+/*----------------*/
+
+/*OLHOS DO EMOJI*/
+.emoji-olho {
+    top: 35px;
+    left: calc(50% - 8px);
+    height: 24px;
+    width: 16px;
+    border-radius: 50%;
+    background: transparent;
+    box-shadow: 25px 0 0 0 #1b2031, /* olho direito */
+        -25px 0 0 0 #1b2031; /* olho esquerdo */
+}
+
+/*BOCA DO EMOJI*/
+.emoji-boca {
+    top: 50%;
+    left: calc(50% - 15px);
+    width: 30px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(#54290f, #622b0b, #6e3011);
+    animation: boca 3s linear infinite; /* abre/fecha */
+} 
+
+/*ANIMAÇÃO BOCA*/
+@keyframes boca {
+
+    10%,
+    30% {
+        width: 20px;
+        height: 20px;
+        left: calc(50% - 10px); /* boca menor (quase fechada) */
+    }
+
+    50%,
+    70% {
+        width: 30px;
+        height: 40px;
+        left: calc(50% - 15px); /* boca maior (aberta) */
+    }
+
+    75%,
+    100% {
+        height: 45px; /* boca ainda mais aberta */
+    }
+}
